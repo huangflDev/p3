@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[155]:
+# In[27]:
 
 
 # 任意选一个你喜欢的整数，这能帮你得到稳定的结果
@@ -20,7 +20,7 @@ seed = 1988
 # 
 # ## 1.1 创建一个 4*4 的单位矩阵
 
-# In[156]:
+# In[28]:
 
 
 # 这个项目设计来帮你熟悉 python list 和线性代数
@@ -42,12 +42,15 @@ C = [[1],
      [3]]
 
 #TODO 创建一个 4*4 单位矩阵
-I = [[1,2,3,4],[2,2,3,4],[3,2,3,4],[4,2,3,4]]
+I = [[1,0,0,0],
+     [0,1,0,0],
+     [0,0,1,0],
+     [0,0,0,1]]
 
 
 # ## 1.2 返回矩阵的行数和列数
 
-# In[157]:
+# In[29]:
 
 
 # TODO 返回矩阵的行数和列数
@@ -55,7 +58,7 @@ def shape(M):
     return len(M),len(M[0])
 
 
-# In[158]:
+# In[30]:
 
 
 # 运行以下代码测试你的 shape 函数
@@ -64,7 +67,7 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_shape')
 
 # ## 1.3 每个元素四舍五入到特定小数数位
 
-# In[159]:
+# In[31]:
 
 
 # TODO 每个元素四舍五入到特定小数数位
@@ -77,7 +80,7 @@ def matxRound(M, decPts=4):
     
 
 
-# In[160]:
+# In[32]:
 
 
 # 运行以下代码测试你的 matxRound 函数
@@ -86,24 +89,25 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_matxRound'
 
 # ## 1.4 计算矩阵的转置
 
-# In[161]:
+# In[33]:
 
 
 # TODO 计算矩阵的转置
 def transpose(M):
-    r,c = shape(M)
-    r_list = []
-    i = 0
-    while i < c:
-        listTemp = []
-        for j in range(r):
-            listTemp.append(M[j][i])
-        i += 1
-        r_list.append(listTemp)
-    return r_list
+#     r,c = shape(M)
+#     r_list = []
+#     i = 0
+#     while i < c:
+#         listTemp = []
+#         for j in range(r):
+#             listTemp.append(M[j][i])
+#         i += 1
+#         r_list.append(listTemp)
+#     return r_list
+    return [x for x in zip(*M)]
 
 
-# In[162]:
+# In[34]:
 
 
 # 运行以下代码测试你的 transpose 函数
@@ -112,7 +116,7 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_transpose'
 
 # ## 1.5 计算矩阵乘法 AB
 
-# In[163]:
+# In[35]:
 
 
 # TODO 计算矩阵乘法 AB，如果无法相乘则raise ValueError
@@ -136,7 +140,7 @@ def matxMultiply(A, B):
     return result
 
 
-# In[164]:
+# In[36]:
 
 
 # 运行以下代码测试你的 matxMultiply 函数
@@ -170,7 +174,7 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_matxMultip
 #     ...    & ... & ... & ...& ...\\
 #     a_{n1}    & a_{n2} & ... & a_{nn} & b_{n} \end{bmatrix}$
 
-# In[165]:
+# In[37]:
 
 
 # TODO 构造增广矩阵，假设A，b行数相同
@@ -182,7 +186,7 @@ def augmentMatrix(A, b):
     return result
 
 
-# In[166]:
+# In[38]:
 
 
 # 运行以下代码测试你的 augmentMatrix 函数
@@ -194,7 +198,7 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_augmentMat
 # - 把某行乘以一个非零常数
 # - 把某行加上另一行的若干倍：
 
-# In[167]:
+# In[39]:
 
 
 # TODO r1 <---> r2
@@ -203,14 +207,14 @@ def swapRows(M, r1, r2):
     M[r1],M[r2] = M[r2],M[r1]
 
 
-# In[168]:
+# In[40]:
 
 
 # 运行以下代码测试你的 swapRows 函数
 get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_swapRows')
 
 
-# In[169]:
+# In[41]:
 
 
 # TODO r1 <--- r1 * scale
@@ -227,14 +231,14 @@ def scaleRow(M, r, scale):
         
 
 
-# In[170]:
+# In[42]:
 
 
 # 运行以下代码测试你的 scaleRow 函数
 get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_scaleRow')
 
 
-# In[171]:
+# In[43]:
 
 
 # TODO r1 <--- r1 + r2*scale
@@ -246,7 +250,7 @@ def addScaledRow(M, r1, r2, scale):
     M[r1] = temp_list
 
 
-# In[172]:
+# In[44]:
 
 
 # 运行以下代码测试你的 addScaledRow 函数
@@ -319,7 +323,7 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_addScaledR
 
 # #### 以下开始你的尝试吧!
 
-# In[173]:
+# In[45]:
 
 
 # 不要修改这里！
@@ -358,7 +362,7 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 #     
 # $...$
 
-# In[174]:
+# In[46]:
 
 
 # 不要修改这里！
@@ -390,15 +394,15 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 #     0 & 0 & 0 & -\frac{5}{14} \end{bmatrix}$
 #     
 # $ --> \begin{bmatrix}
-#     0 & 0 & 0 & 0 \\
-#     0 & 0 & 0 & 0 \\
-#     0 & 0 & 0 & 0 \end{bmatrix}$
+#     1 & 0 & \frac{3}{5} & 0 \\
+#     0 & 1 & -\frac{2}{5} & 0 \\
+#     0 & 0 & 0 & 1 \end{bmatrix}$
 #     
 # $...$
 
 # ### 2.3.3 实现 Gaussian Jordan 消元法
 
-# In[175]:
+# In[47]:
 
 
 # TODO 实现 Gaussain Jordan 方法求解 Ax = b
@@ -444,7 +448,7 @@ def gj_Solve(A, b, decPts=4, epsilon = 1.0e-16):
     
 
 
-# In[176]:
+# In[48]:
 
 
 # 运行以下代码测试你的 gj_Solve 函数
@@ -479,7 +483,7 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_gj_Solve')
 
 # ## 3.1 随机生成样本点
 
-# In[177]:
+# In[49]:
 
 
 # 不要修改这里！
@@ -502,12 +506,12 @@ plt.show()
 # 
 # ### 3.2.1 猜测一条直线
 
-# In[216]:
+# In[82]:
 
 
 #TODO 请选择最适合的直线 y = mx + b
 m1 = -1.3
-b1 = 7.175
+b1 = 7.21
 
 # 不要修改这里！
 plt.xlim((-5,5))
@@ -529,7 +533,7 @@ plt.show()
 # MSE = \frac{1}{n}\sum_{i=1}^{n}{(y_i - mx_i - b)^2}
 # $$
 
-# In[217]:
+# In[83]:
 
 
 # TODO 实现以下函数并输出所选直线的MSE
@@ -538,7 +542,7 @@ def calculateMSE(X,Y,m,b):
     result = 0
     if len(X) > 0 and len(X) == len(Y):
         for i in range(len(X)):
-            result += Y[i] - m * X[i] - b
+            result += (Y[i] - m * X[i] - b)**2
         result = result / len(X)
     else:
         raise ValueError
