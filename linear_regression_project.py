@@ -543,6 +543,7 @@ def calculateMSE(X,Y,m,b):
     if len(X) > 0 and len(X) == len(Y):
         for i in range(len(X)):
             result += (Y[i] - m * X[i] - b)**2
+            
         result = result / len(X)
     else:
         raise ValueError
